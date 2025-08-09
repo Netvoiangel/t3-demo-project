@@ -3,7 +3,7 @@ import { z } from "zod";
 import { createTRPCRouter, publicProcedure } from "~/server/api/trpc";
 import { events } from "~/server/db/schema";
 
-export const postRouter = createTRPCRouter({
+export const eventRouter = createTRPCRouter({
 //   hello: publicProcedure.input(z.object({ text: z.string() })).query(({ input }) => {
 //     return {
 //       greeting: `Hello ${input.text}`,
@@ -25,4 +25,5 @@ export const postRouter = createTRPCRouter({
 
 //     return post ?? null;
 //   }),
+    getAllEvents: publicProcedure.query(async () => {})
 });
