@@ -1,8 +1,7 @@
-import { drizzle } from "drizzle-orm/libsql";
 
 import { Fragment } from "react/jsx-runtime";
-import { events } from "~/server/db/schema";
 import EventList from "./_components/events/event-list";
+import { api } from "~/trpc/server";
 
 type events = {
   id: number;
@@ -23,14 +22,12 @@ export default async function AllEventsPage() {
   //     router.push(fullpath);
   // }
 
-  const db = drizzle(process.env.DATABASE_URL!);
-
-  const allEvents: events = await db.select().from(events);
+  const events: events = await api.event.getAllEvents();
 
   return (
     <Fragment>
       {/* <EventsSearch onSearch={findEventsHandler} /> */}
-      <EventList items={allEvents} />
+      <EventList items={events} />
     </Fragment>
   );
 }
