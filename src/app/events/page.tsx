@@ -5,6 +5,7 @@ import EventList from "../_components/events/event-list";
 type events = {
   id: number;
   title: string;
+  image: string;
   description: string;
   date: Date;
   location: string;
