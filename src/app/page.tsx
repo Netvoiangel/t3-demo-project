@@ -1,33 +1,14 @@
+import type { AppProps } from "next/app";
+import "../styles/globals.css";
 
-import { Fragment } from "react/jsx-runtime";
-import EventList from "./_components/events/event-list";
-import { api } from "~/trpc/server";
-
-type events = {
-  id: number;
-  title: string;
-  description: string;
-  date: Date;
-  location: string;
-  createdAt: Date | null;
-}[];
-
-export default async function AllEventsPage() {
-  // const events = getAllEvents();
-
-
-  // function findEventsHandler(year, month) {
-  //     const fullpath = `/events/${year}/${month}`;
-
-  //     router.push(fullpath);
-  // }
-
-  const events: events = await api.event.getAllEvents();
-
+function MyApp({ Component, pageProps }: AppProps) {
   return (
-    <Fragment>
-      {/* <EventsSearch onSearch={findEventsHandler} /> */}
-      <EventList items={events} />
-    </Fragment>
+    <>
+      <div>
+        <h1>Home Page</h1>
+      </div>
+    </>
   );
 }
+
+export default MyApp;
