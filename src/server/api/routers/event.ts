@@ -30,4 +30,8 @@ export const eventRouter = createTRPCRouter({
     const allEvents = await db.select().from(events);
     return allEvents;
   }),
+  getEventById: publicProcedure.query(async (id) => {
+    const event = await db.select({ id: events.id }).from(events);
+    return event;
+  })
 });
